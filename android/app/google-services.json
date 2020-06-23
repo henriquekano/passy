@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1012391882642",
+    "firebase_url": "https://passy-b7535.firebaseio.com",
+    "project_id": "passy-b7535",
+    "storage_bucket": "passy-b7535.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012391882642:android:68d288c44072a77c1e9b4b",
+        "android_client_info": {
+          "package_name": "com.passy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012391882642-88k090hbmr335d9oin4dv882rlr78ugh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHYp7EYclfx6THtKZXDBZ8QJ9hcEOR7Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012391882642-88k090hbmr335d9oin4dv882rlr78ugh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
