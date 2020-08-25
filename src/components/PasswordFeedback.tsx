@@ -118,7 +118,6 @@ const PasswordFeedback: React.FC<PasswordFeedbackProps> = ({ textInput }) => {
           </>
         ) : null}
       </View>
-      <Divider accessibilityStates />
     </>
   )
 }

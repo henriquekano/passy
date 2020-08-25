@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="1000%p"
+    android:horizontalGap="5dp"
+    android:verticalGap="5dp"
+    android:keyHeight="60dp">
+
+    <Row>
+        <Key android:codes="1" android:keyLabel="Fill password" android:keyEdgeFlags="left|right"/>
+    </Row>
+
+</Keyboard>

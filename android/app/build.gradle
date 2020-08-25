@@ -92,7 +92,7 @@ apply from: "../../node_modules/react-native/react.gradle"
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = true
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
@@ -133,8 +133,8 @@ android {
         applicationId "com.passy"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "0.0.1"
+        versionCode 3
+        versionName "0.0.3"
         multiDexEnabled true
     }
     splits {
@@ -152,7 +152,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('my-upload-key.keystore')
+            storePassword "$System.env.MYAPP_UPLOAD_STORE_PASSWORD"
+            keyAlias "$System.env.MYAPP_UPLOAD_KEY_ALIAS"
+            keyPassword "$System.env.MYAPP_UPLOAD_KEY_PASSWORD"
+        }
     }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -160,7 +167,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

@@ -1,14 +1,13 @@
 package com.passy;
 
 import android.app.Activity;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.modules.storage.ReactDatabaseSupplier;
-import com.facebook.react.modules.storage.AsyncLocalStorageUtil;
+
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
 
@@ -29,23 +28,22 @@ public class MainActivity extends ReactActivity {
     Activity self = this;
     return new ReactActivityDelegate(this, getMainComponentName()) {
       private Bundle bundle = null;
+      private AsyncStorageUtil asyncStorageUtil = new AsyncStorageUtil();
 
       @Override
       protected void onCreate(Bundle savedInstanceState) {
-        SQLiteDatabase readableDatabase = null;
-        readableDatabase = ReactDatabaseSupplier
-                .getInstance( self.getApplicationContext())
-                .getReadableDatabase();
-
-        String onboardingShown = null;
-        if (readableDatabase != null) {
-          onboardingShown = AsyncLocalStorageUtil.getItemImpl(readableDatabase, "onboardingShown");
+        SplashScreen.show(self);
+        try {
+          asyncStorageUtil.init(self.getApplicationContext());
+          String onboardingShown = this.asyncStorageUtil.get("onboardingShown");
+          Bundle bundle = new Bundle();
+          bundle.putBoolean("onboardingShown", "true".equals(onboardingShown));
+          Log.i("MainActivity", "onboardingShown: "+ (onboardingShown));
+          this.bundle = bundle;
+        } catch (Exception e) {
+          e.printStackTrace();
         }
-        Bundle bundle = new Bundle();
-        bundle.putBoolean("onboardingShown", "true".equals(onboardingShown));
-        Log.i("MainActivity", "onboardingShown: "+ (onboardingShown));
 
-        this.bundle = bundle;
         super.onCreate(savedInstanceState);
       }
 
