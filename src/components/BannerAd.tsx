@@ -1,13 +1,12 @@
 import React from 'react'
 import { BannerAd, TestIds, BannerAdSize } from '@react-native-firebase/admob'
-import firebaseConfig from '../../firebase.json'
 
 const unitId = __DEV__
   ? TestIds.BANNER
-  : firebaseConfig['react-native'].admob_android_app_id
+  : 'ca-app-pub-4308457150792383/3161323805'
 
 const Banner = () => (
-  <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.FULL_BANNER} />
+  <BannerAd unitId={unitId} size={BannerAdSize.FULL_BANNER} />
 )
 
 export default Banner
